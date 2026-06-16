@@ -1,0 +1,41 @@
+{
+  "model": "claude-sonnet-4-20250514",
+  "provider": "anthropic",
+  "system_prompt_file": "AGENTS.md",
+  "memory_file": "MEMORY.md",
+  "skills_dirs": ["skills"],
+  "platforms": {
+    "feishu": {
+      "enabled": true,
+      "app_id": "${FEISHU_APP_ID}",
+      "app_secret": "${FEISHU_APP_SECRET}",
+      "verification_token": "${FEISHU_VERIFICATION_TOKEN}"
+    },
+    "dingtalk": {
+      "enabled": true,
+      "app_key": "${DINGTALK_APP_KEY}",
+      "app_secret": "${DINGTALK_APP_SECRET}"
+    },
+    "telegram": {
+      "enabled": true,
+      "bot_token": "${TELEGRAM_BOT_TOKEN}"
+    }
+  },
+  "mcp_servers": {
+    "ticket_server": {
+      "command": "python3",
+      "args": ["mcp_servers/ticket_server.py"],
+      "description": "工单管理系统"
+    }
+  },
+  "tools": {
+    "read_file": {
+      "enabled": true,
+      "allowed_paths": ["knowledge_base/", "MEMORY.md"]
+    },
+    "write_file": {
+      "enabled": true,
+      "allowed_paths": ["MEMORY.md"]
+    }
+  }
+}
