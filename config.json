@@ -1,42 +1,49 @@
 {
-  "model": "claude-sonnet-4-20250514",
-  "note": "可替换为任意支持 Anthropic API 的模型，如 claude-haiku-4-5-20251001",
-  "provider": "anthropic",
-  "system_prompt_file": "AGENTS.md",
-  "memory_file": "MEMORY.md",
-  "skills_dirs": ["skills"],
-  "platforms": {
-    "feishu": {
-      "enabled": true,
-      "app_id": "${FEISHU_APP_ID}",
-      "app_secret": "${FEISHU_APP_SECRET}",
-      "verification_token": "${FEISHU_VERIFICATION_TOKEN}"
-    },
-    "dingtalk": {
-      "enabled": true,
-      "app_key": "${DINGTALK_APP_KEY}",
-      "app_secret": "${DINGTALK_APP_SECRET}"
-    },
-    "telegram": {
-      "enabled": true,
-      "bot_token": "${TELEGRAM_BOT_TOKEN}"
+  "agents": {
+    "defaults": {
+      "model": "~", 
+      "provider": "~",
+      "max_tokens": 4096,
+      "temperature": 0.7
     }
+  },
+  "providers": {
+    "openai": {
+      "api_key": "${OPENAI_API_KEY}",
+      "api_base": "https://api.openai.com/v1"
+    },
+    "anthropic": {
+      "api_key": "${ANTHROPIC_API_KEY}"
+    },
+    "deepseek": {
+      "api_key": "${DEEPSEEK_API_KEY}",
+      "api_base": "https://api.deepseek.com"
+    },
+    "qwen": {
+      "api_key": "${DASHSCOPE_API_KEY}",
+      "api_base": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    },
+    "zhipu": {
+      "api_key": "${ZHIPU_API_KEY}",
+      "api_base": "https://open.bigmodel.cn/api/paas/v4"
+    },
+    "moonshot": {
+      "api_key": "${MOONSHOT_API_KEY}",
+      "api_base": "https://api.moonshot.cn/v1"
+    },
+    "ollama": {
+      "api_key": "ollama",
+      "api_base": "http://localhost:11434/v1"
+    }
+  },
+  "skills": {
+    "path": "./skills"
   },
   "mcp_servers": {
     "ticket_server": {
       "command": "python3",
       "args": ["mcp_servers/ticket_server.py"],
       "description": "工单管理系统"
-    }
-  },
-  "tools": {
-    "read_file": {
-      "enabled": true,
-      "allowed_paths": ["knowledge_base/", "MEMORY.md"]
-    },
-    "write_file": {
-      "enabled": true,
-      "allowed_paths": ["MEMORY.md"]
     }
   }
 }
