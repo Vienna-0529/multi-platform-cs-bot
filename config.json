@@ -1,5 +1,6 @@
 {
   "model": "claude-sonnet-4-20250514",
+  "note": "可替换为任意支持 Anthropic API 的模型，如 claude-haiku-4-5-20251001",
   "provider": "anthropic",
   "system_prompt_file": "AGENTS.md",
   "memory_file": "MEMORY.md",
